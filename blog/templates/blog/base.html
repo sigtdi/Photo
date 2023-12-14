@@ -15,8 +15,8 @@
                 <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
                 <a class="top-menu" href="{% url 'user_profile' pk=user.id %}">Велком ту хелл, {{ user.username }}</a>
             {% else %}
-                <a href="{% url 'registration' %}" class="top-menu"><span class="glyphicon glyphicon-user"></span></a>
-                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-log-in"></span></a>
+                <a href="{% url 'registration' %}" class="top-menu">Зарегистрироваться<span class="glyphicon glyphicon-user"></span></a>
+                <a href="{% url 'login' %}" class="top-menu">Войти<span class="glyphicon glyphicon-log-in"></span></a>
             {% endif %}
             <h1><a href="/">Чтобы удалиться нажмите здесь</a></h1>
         </div>
