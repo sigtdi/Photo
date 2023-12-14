@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<article>
+{% for post in posts %}
+    <div class="post">
+        <a class="mr-2" href="{% url 'user_profile' pk=post.author.id %}">{{ post.author }}</a>
+        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+        {% if post.image %}
+            <img src="{{ post.image.url}}" class="rounded featured-image-list" style="max-height:300px">
+        {% else %}
+            <p></p>
+        {% endif %}
+        <div class="date">
+            <p>Опубликовано: {{ post.published_date }}</p>
+        </div>
+    </div>
+</article>
+{% endfor %}
+{% endblock %}

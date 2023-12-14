@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% else %}
+            <a class = "comment_button h4" href="{% url 'post_publish' pk=post.pk %}"><span class="glyphicon glyphicon-check"></span></a>
+        {% endif %}
+        {% if post.author.id == user.id  %}
+            <a class = "comment_button h4" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class = "comment_button h4" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+        {% endif %}
+        <a class="mr-2" href="{% url 'user_profile' pk=post.author.id %}">{{ post.author }}</a>
+        <h1>{{ post.title }}</h1>
+        {% if post.image %}
+            <img src="{{ post.image.url}}" class="rounded featured-image-list" style="max-height:300px">
+        {% else %}
+            <p></p>
+        {% endif %}
+        <p>{{ post.description|linebreaksbr }}</p>
+        <a class = "comment_button h4"  href="{% url 'like_post' pk=post.pk %}"><span class="glyphicon glyphicon-heart-empty">{{ post.likes }}</span></a>
+    </div>
+    <hr>
+    <a class = "comment_button h4" href="{% url 'add_comment_to_post' pk=post.pk %}"><span class="glyphicon glyphicon-plus"></span></a>
+    {% for comment in post.comments.all %}
+        <div class="comment">
+            <div class="date">{{ comment.created_date }}</div>
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.text|linebreaks }}</p>
+        </div>
+    {% empty %}
+        <p>ты одинок :(</p>
+    {% endfor %}
+{% endblock %}
