@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-        <title>Чтобы удалиться нажмите здесь</title>
+        <title>:)</title>
     </head>
     <body>
         <div class="page-header">
@@ -15,10 +15,10 @@
                 <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
                 <a class="top-menu" href="{% url 'user_profile' pk=user.id %}">Велком ту хелл, {{ user.username }}</a>
             {% else %}
-                <a href="{% url 'registration' %}" class="top-menu">Зарегистрироваться<span class="glyphicon glyphicon-user"></span></a>
-                <a href="{% url 'login' %}" class="top-menu">Войти<span class="glyphicon glyphicon-log-in"></span></a>
+                <a href="{% url 'registration' %}" class="top-menu"><span class="glyphicon glyphicon-user"></span></a>
+                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-log-in"></span></a>
             {% endif %}
-            <h1><a href="/">Чтобы удалиться нажмите здесь</a></h1>
+            <h1><a href="{% url 'post_list' %}">Чтобы удалиться нажмите здесь</a></h1>
         </div>
         <div class="content container">
             <div class="row">

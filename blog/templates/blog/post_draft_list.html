@@ -7,7 +7,7 @@
                 <p class="date">created: {{ post.created_date|date:'d-m-Y' }}</p>
                 <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
                 <p>{{ post.text|truncatechars:200 }}</p>
-                <p>{{ post.image|truncatechars:200 }}</p>
+                <img src="{{ post.image.url}}" class="rounded featured-image-list" style="max-height:300px">
             </div>
         {%endif%}
     {% endfor %}
